@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (C) 2015 Baidu, Inc. All Rights Reserved.
+  -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+        http://www.springframework.org/schema/task
+    	http://www.springframework.org/schema/task/spring-task-3.0.xsd
+    	http://www.springframework.org/schema/cache
+        http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+    <description>spring 配置文件</description>
+
+    <!-- 变量配置 -->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+        <property name="ignoreResourceNotFound" value="true" />
+        <property name="locations">
+            <list>
+                <!--<value>classpath:datasource.properties</value>-->
+                <!--<value>classpath:application.properties</value>-->
+                <!--<value>classpath:ubmc.properties</value>-->
+                <!--<value>classpath:rpc-server.properties</value>-->
+            </list>
+        </property>
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
+    </bean>
+
+    <context:component-scan base-package="com.baidu.sspweb.service.allknow />
+
+    <!--&lt;!&ndash; Hibernate配置 &ndash;&gt;-->
+    <!--<bean id="sspSessionFactory"-->
+          <!--class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">-->
+        <!--<property name="dataSource" ref="sspBizDataSource" />-->
+        <!--<property name="namingStrategy">-->
+            <!--<bean class="org.hibernate.cfg.ImprovedNamingStrategy" />-->
+        <!--</property>-->
+        <!--<property name="hibernateProperties">-->
+            <!--<props>-->
+                <!--<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>-->
+                <!--<prop key="hibernate.show_sql">true</prop>-->
+                <!--<prop key="hibernate.current_session_context_class">com.cudrania.hibernate.TransactionAwareSessionContext</prop>-->
+                <!--<prop key="hibernate.cache.use_second_level_cache">false</prop>-->
+                <!--<prop key="hibernate.cache.use_query_cache">false</prop>-->
+            <!--</props>-->
+        <!--</property>-->
+        <!--<property name="packagesToScan" value="com.baidu.sspweb.service.entity" />-->
+        <!--<property name="entityInterceptor" ref="hibernateInterceptor"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="hibernateInterceptor" class="com.baidu.sspweb.service.creative.innerapi.utils.HibernateInterceptor" />-->
+
+    <!--&lt;!&ndash; 事务配置 &ndash;&gt;-->
+    <!--<bean id="sspTransactionManager"-->
+          <!--class="org.springframework.orm.hibernate4.HibernateTransactionManager">-->
+        <!--<property name="sessionFactory" ref="sspSessionFactory" />-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; 使用annotation定义事务 &ndash;&gt;-->
+    <!--<tx:annotation-driven transaction-manager="sspTransactionManager" />-->
+
+
+    <!--<bean id="sspBizDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"-->
+          <!--destroy-method="close">-->
+        <!--<property name="driverClass">-->
+            <!--<value>${jdbc.driverClassName}</value>-->
+        <!--</property>-->
+        <!--<property name="jdbcUrl">-->
+            <!--<value>${jdbc.url}</value>-->
+        <!--</property>-->
+        <!--<property name="user">-->
+            <!--<value>${jdbc.username}</value>-->
+        <!--</property>-->
+        <!--<property name="password">-->
+            <!--<value>${jdbc.password}</value>-->
+        <!--</property>-->
+        <!--<property name="maxPoolSize">-->
+            <!--<value>${jdbc.maxPoolSize}</value>-->
+        <!--</property>-->
+        <!--<property name="minPoolSize">-->
+            <!--<value>${jdbc.minPoolSize}</value>-->
+        <!--</property>-->
+        <!--<property name="idleConnectionTestPeriod">-->
+            <!--<value>${jdbc.idleConnectionTestPeriod}-->
+            <!--</value>-->
+        <!--</property>-->
+        <!--<property name="maxIdleTime">-->
+            <!--<value>${jdbc.maxIdleTime}</value>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+
+
+
+    <!-- 加载rpc服务配置 -->
+    <!--<import resource="applicationContext-rpc.xml"/>-->
+
+</beans>
